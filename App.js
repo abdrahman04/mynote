@@ -1,10 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import { StyleSheet, Text, View, Button, ScrollView, Modal, TouchableOpacity } from 'react-native';
 import Header from './components/header';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
-import Add from './modals/add'
+import Add from './modals/add';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function App() {
 const [addModal, setaddModal] = useState(false);
@@ -15,13 +16,49 @@ const showModal = () =>{
     setaddModal(false)
   }
 }
-  
+
+var keys ;
+  const print = async () => {
+    try {
+       keys = await AsyncStorage.getAllKeys();
+       keys = JSON.stringify(keys)
+
+    } catch (e) {
+      alert("errrr")
+    }
+    console.log(keys)
+    var keymo = JSON.parse(keys)
+  var keylen =  Object.keys(keymo).length;
+  // console.log(keylen)
+
+  var i = 0;
+
+  while(i < keylen ){
+    // console.log(keymo[i]);
+    const getitem = await AsyncStorage.getItem(keymo[i]);
+    var tragetitem = JSON.parse(getitem)
+    // console.log(tragetitem)
+    // console.log(tragetitem.title)
+    // console.log(tragetitem.note)
+    var showtitle = tragetitem.title;
+    var shownote = tragetitem.note
+    
+
+i++;
+}
+
+
+  }
+
+  print(keys)
+  // console.log(element)
+
   return (
     <View style={styles.container}>
       <Header />
       <View>
       <ScrollView>
-        <Text>main</Text>
+       <View><Text>everthing work good</Text></View>
         </ScrollView>
         </View>
         <Modal visible={addModal} animationType={"slide"} >
@@ -44,30 +81,10 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
   },
-//   add:{
-//     backgroundColor: "#FFC300",
-//     marginLeft:280,
-//     marginTop: 720,
-//     position: "absolute",
-//     padding: 20,
-//     borderRadius: 50,
-//     shadowColor: "#000",
-// shadowOffset: {
-// 	width: 0,
-// 	height: 2,
-// },
-// shadowOpacity: 0.25,
-// shadowRadius: 3.84,
-
-// elevation: 5,
-  // },
   adde:{
     backgroundColor: "#FFC300",
     padding: 20,
     borderRadius: 50,
-    // position: "absolute",
-    // height: 100,
-    // marginLeft:280,
     marginTop: 650,
     width: 70,
     marginHorizontal: 280,
