@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect} from 'react';
-import { StyleSheet, Text, View, Button, ScrollView, Modal, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Modal, TouchableOpacity } from 'react-native';
 import Header from './components/header';
 import { AntDesign } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 import Add from './modals/add';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Store from './components/Store';
 
 export default function App() {
 const [addModal, setaddModal] = useState(false);
@@ -16,6 +17,8 @@ const showModal = () =>{
     setaddModal(false)
   }
 }
+
+var [state, stestate]= useState("");
 
 var keys ;
   const print = async () => {
@@ -33,6 +36,8 @@ var keys ;
 
   var i = 0;
 
+  var showtitle;
+  var shownote;
   while(i < keylen ){
     // console.log(keymo[i]);
     const getitem = await AsyncStorage.getItem(keymo[i]);
@@ -40,25 +45,32 @@ var keys ;
     // console.log(tragetitem)
     // console.log(tragetitem.title)
     // console.log(tragetitem.note)
-    var showtitle = tragetitem.title;
-    var shownote = tragetitem.note
-    
-
-i++;
+     showtitle = tragetitem.title;
+     shownote = tragetitem.note
+     
+     i++;
+     
 }
+stestate(showtitle)
 
 
+
+
+
+// console.log(shownote)
   }
 
   print(keys)
-  // console.log(element)
+//   // console.log(element)
 
   return (
     <View style={styles.container}>
       <Header />
       <View>
       <ScrollView>
-       <View><Text>everthing work good</Text></View>
+       <View>
+         <Text>{state}</Text>
+       </View>
         </ScrollView>
         </View>
         <Modal visible={addModal} animationType={"slide"} >
