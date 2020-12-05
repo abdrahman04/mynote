@@ -26,9 +26,9 @@ print = async() => {
           // console.log(this.koy.keysget);
           var keys = this.koy.keys
           console.log(keys)
-          var dekeys = keys.keys;
-          var numkey = Object.keys(dekeys).length;
-          console.log(numkey)
+          // var dekeys = keys.keys;
+          // var numkey = Object.keys(dekeys).length;
+          // console.log(numkey)
            
         } catch (e) {
           alert("Failed to load data !!")
@@ -58,7 +58,7 @@ print = async() => {
           console.log(tragetitem.note)
           var showtitle = tragetitem.title;
           var shownote = tragetitem.note;
-          
+
         });
 
 }
