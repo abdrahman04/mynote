@@ -26,11 +26,40 @@ print = async() => {
           // console.log(this.koy.keysget);
           var keys = this.koy.keys
           console.log(keys)
-          console.log(Object.keys())
-          // var dekeys = 
+          var dekeys = keys.keys;
+          var numkey = Object.keys(dekeys).length;
+          console.log(numkey)
+           
         } catch (e) {
           alert("Failed to load data !!")
         }
+        // var i ;
+        // for(i = 0 ; i < numkey; i++){
+        //   // console.log(dekeys[i]);
+        //   const getitem = await AsyncStorage.getItem(dekeys[i]);
+        //   var tragetitem = JSON.parse(getitem)
+        //   // console.log(tragetitem)
+        //   // console.log(tragetitem.title)
+        //   // console.log(tragetitem.note)
+        //   var showtitle = tragetitem.title;
+        //   var shownote = tragetitem.note;
+          
+        //   // this.setState({title: showtitle, note: shownote})
+         
+          
+        // }
+
+        keys.keys.forEach(async (element) => {
+          const getitem =await  AsyncStorage.getItem(element);
+          // console.log(getitem)
+          var tragetitem = JSON.parse(getitem)
+          // console.log(tragetitem)
+          console.log(tragetitem.title)
+          console.log(tragetitem.note)
+          var showtitle = tragetitem.title;
+          var shownote = tragetitem.note;
+          
+        });
 
 }
     
@@ -41,6 +70,7 @@ print = async() => {
         return (
             <View>
                 <Text>{this.state.title}</Text>
+                <Text>{this.state.note}</Text>
                 <Button onPress={this.print}  title="press me" ></Button>
             </View>
         )
