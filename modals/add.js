@@ -19,6 +19,7 @@ const everyitem = {
       const jsonValue = JSON.stringify(everyitem);
       await AsyncStorage.setItem(titleinput, jsonValue)
       console.log("data saved")
+      
     } catch (e) {
       // saving error
       alert("faild to save data")

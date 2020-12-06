@@ -21,7 +21,7 @@ const showModal = () =>{
 
 
 var keys ;
-var Items = [{test: "she dosnt", title:"suc"}];
+var Items = [{note: "this is your note !!", title:"this is your note !!"}];
   const print = async () => {
     try {
        keys = await AsyncStorage.getAllKeys();
@@ -82,7 +82,8 @@ var Items = [{test: "she dosnt", title:"suc"}];
     const removeitem = async(title) => {
       console.log(title)
       try{
-        await AsyncStorage.removeItem(title)
+        await AsyncStorage.removeItem(title);
+        setdetModal(false);
       }catch {
         alert("can't remove Note Try later")
       }
@@ -95,7 +96,7 @@ var Items = [{test: "she dosnt", title:"suc"}];
     </View>
     </TouchableOpacity>
 
-    <Modal visible={detModal}>
+    <Modal visible={detModal} animationType={"slide"}>
       <View style={styles.headermodal}>
     <Ionicons name="ios-arrow-round-back" size={42} style={styles.colsemodal} color="black" onPress={()=>  setdetModal(false)}/>
     <Feather name="trash" size={28} color="black" style={styles.trashs} onPress={() => removeitem(title)}  />
@@ -145,7 +146,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFC300",
     padding: 20,
     borderRadius: 50,
-    marginTop: 25,
+    marginTop: 18,
     width: 70,
     marginHorizontal: 280,
     shadowColor: "#000",
@@ -168,7 +169,7 @@ elevation: 5,
   firstitem: {
     borderWidth: 1,
     borderColor: "#e5e5e5",
-    marginBottom: 5,
+    marginBottom: 10,
     padding: 15,
     borderRadius: 10,
   },
