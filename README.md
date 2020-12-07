@@ -1,4 +1,6 @@
 # mynote
 
 Note app created using 
--Ract Native
+-React Native
+-AsyncStorage
+-Expo
