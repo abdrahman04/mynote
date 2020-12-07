@@ -5,4 +5,4 @@ Note app created using <br>
 -AsyncStorage <br>
 -Expo <br>
 
-<a href="https://abdrahmanbadou-14cc8.web.app/" >Visit ma web site</a>
+<a href="https://abdrahmanbadou-14cc8.web.app/" >Visit my web site</a>
